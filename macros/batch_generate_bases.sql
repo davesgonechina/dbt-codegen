@@ -10,7 +10,12 @@
 -%}
 
 {%- for node in existing_node_list -%}
+
+{% set base_model_name %}
 base_{{database_name}}__{{source_name}}_{{node.name}}.sql
+{% endset %}
+
+{{ log(base_model_name, info=True) }}
 
 {{ codegen.generate_base_model(
     source_name, 
